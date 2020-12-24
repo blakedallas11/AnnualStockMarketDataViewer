@@ -41,24 +41,24 @@ def calculateReturns(initialAmount, startYear, endYear, lists):
 #Runs the 30 year simulation
 
 #list to hold all data 
-dataFromEach30 = []
-length_in_years = 30
+dataFromEach = []
+length_in_years = 30 #This is the number to change and it should be able to change the whole program
 for i in range(len(lol)):
 	if i <= (len(lol) - (length_in_years + 1)):
-		dataFromEach30.append(calculateReturns(17000,i,i + length_in_years,lol))
+		dataFromEach.append(calculateReturns(17000,i,i + length_in_years,lol))
 
 
 #Changes data type from string
-for i in range(len(dataFromEach30)):
-	float(dataFromEach30[i])
-	round(dataFromEach30[i],2)
+for i in range(len(dataFromEach)):
+	float(dataFromEach[i])
+	round(dataFromEach[i],2)
 	
 
 #finds min, max, and variance of the data
-print("Minimum Balance: " + str(f"{min(dataFromEach30):,.2f}"))
-print("Maximum Balance: " + str(f"{max(dataFromEach30):,.2f}"))
-print("Average Balance: " + str(f"{mean(dataFromEach30):,.2f}"))
-print("Standard Deviation: " + str(f"{np.std(dataFromEach30):,.2f}"))
+print("Minimum Balance: " + str(f"{min(dataFromEach):,.2f}"))
+print("Maximum Balance: " + str(f"{max(dataFromEach):,.2f}"))
+print("Average Balance: " + str(f"{mean(dataFromEach):,.2f}"))
+print("Standard Deviation: " + str(f"{np.std(dataFromEach):,.2f}"))
 
 
 #creates a list of the years in the data to be used for plot y axis
@@ -69,7 +69,7 @@ for i in range(len(lol)-length_in_years):
 
 # Data for plotting
 t = years
-s = dataFromEach30
+s = dataFromEach
 
 
 fig, ax = plt.subplots()

@@ -6,7 +6,7 @@ import numpy as np
 import matplotlib as matplt
 import matplotlib.pyplot as plt 
 
-
+#Testing!
 #opens the CSV file, turns it into a list of lists with tabs as the delimiter not commas
 lol = list(csv.reader(open('S&P500_Returns_1926-2020.csv', 'rt'), delimiter='\t'))
 

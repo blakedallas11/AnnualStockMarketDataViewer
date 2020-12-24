@@ -16,8 +16,8 @@ lol.reverse()
 
 #gets the Average yearly returns from the whole 94 years
 totalReturns = 0
-for i in range(len(lol)-1):
-	totalReturns = totalReturns + float(lol[i][1])
+for row in lol:
+	totalReturns += float(row[1])
 totalReturns = totalReturns / 94
 print("Average Gains over past 94 years: " + str(round(totalReturns,2)) + "%")
 

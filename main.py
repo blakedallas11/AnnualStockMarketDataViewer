@@ -1,6 +1,7 @@
 import csv as csv
 import itertools
 import statistics
+from statistics import mean
 import numpy as np
 import matplotlib as matplt
 import matplotlib.pyplot as plt 
@@ -10,11 +11,11 @@ import matplotlib.pyplot as plt
 lol = list(csv.reader(open('S&P500_Returns_1926-2020.csv', 'rt'), delimiter='\t'))
 
 
-#This gets the data starting in 1926 not in 2020
+#Reverses the order of the data to start in 1926 not in 2020
 lol.reverse()
 
 
-#gets the Average yearly returns from the whole 94 years
+#Gets the Average yearly returns from the whole 94 years
 totalReturns = 0
 for row in lol:
 	totalReturns += float(row[1])
@@ -41,9 +42,10 @@ def calculateReturns(initialAmount, startYear, endYear, lists):
 
 #list to hold all data 
 dataFromEach30 = []
+length_in_years = 30
 for i in range(len(lol)):
-	if i <= (len(lol) - 31):
-		dataFromEach30.append(calculateReturns(17000,i,i + 30,lol))
+	if i <= (len(lol) - (length_in_years + 1)):
+		dataFromEach30.append(calculateReturns(17000,i,i + length_in_years,lol))
 
 
 #Changes data type from string
@@ -55,12 +57,13 @@ for i in range(len(dataFromEach30)):
 #finds min, max, and variance of the data
 print("Minimum Balance: " + str(f"{min(dataFromEach30):,.2f}"))
 print("Maximum Balance: " + str(f"{max(dataFromEach30):,.2f}"))
+print("Average Balance: " + str(f"{mean(dataFromEach30):,.2f}"))
 print("Standard Deviation: " + str(f"{np.std(dataFromEach30):,.2f}"))
 
 
 #creates a list of the years in the data to be used for plot y axis
 years = []
-for i in range(65):
+for i in range(len(lol)-length_in_years):
 	years.append((1956 + i))
 
 
